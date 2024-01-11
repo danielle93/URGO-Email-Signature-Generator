@@ -1,0 +1,237 @@
+#emailsigform {
+  input {
+    border: none;
+    border-radius: var(--radius-md);
+    padding: var(--space-xs);
+    margin-top: var(--space-xxs);
+    margin-bottom: var(--space-sm);
+  }
+  input[type="text"],
+  input[type="tel"] {
+    width: 100%;
+  }
+
+  input[type="radio"] {
+    // margin: 0;
+    // margin-right: var(--space-xs);
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .agency-radio {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: ease background-color 500ms;
+  }
+
+  /* On mouse-over, add a grey background color */
+  .radio-container:hover input ~ .agency-radio {
+    background-color: #e0e0e0;
+    border: 4px solid white;
+  }
+
+  /* When the radio button is checked, add a blue background */
+  .radio-container input:checked ~ .agency-radio {
+    background-color: white;
+  }
+
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .agency-radio:after {
+    content: "";
+    position: absolute;
+    opacity: 0;
+    transition: ease all 500ms;
+  }
+
+  /* Show the indicator (dot/circle) when checked */
+  .radio-container input:checked ~ .agency-radio:after {
+    // display: block;
+    opacity: 1;
+  }
+
+  /* Style the indicator (dot/circle) */
+  .radio-container .agency-radio:after {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #2c2c2a;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+button {
+  border-radius: 100px !important;
+  box-shadow: none !important;
+  font-size: 18px !important;
+  padding: 1em 2em !important;
+  transition: ease all 500ms !important;
+}
+
+ul {
+  margin-left: 1em;
+  list-style-type: disc;
+
+  li {
+    margin-bottom: 0.5em;
+  }
+}
+
+.loader {
+  height: 100vh;
+  width: 100vw;
+  object-fit: cover;
+  position: fixed;
+  top: 0;
+  z-index: var(--z-index-fixed-element);
+}
+
+.btn--habitat,
+.button--habitat {
+  position: relative;
+  display: inline-block;
+  background-color: var(--color-contrast-higher);
+  color: var(--color-bg);
+  overflow: hidden;
+
+  ::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    background-color: var(--color-lavender-lighter);
+    color: var(--color-black);
+    z-index: -1;
+    border-radius: var(--btn-radius);
+    transform-origin: right top;
+    transform: scaleX(0);
+    transition: transform 0.4s cubic-bezier(0.5, 1, 0, 1);
+  }
+}
+
+.button--habitat {
+  > span {
+    display: inline-block;
+    opacity: 0;
+  }
+
+  &.btn--icon {
+    > span {
+      display: flex;
+      opacity: 0;
+    }
+  }
+}
+
+.button--habitat {
+  > span {
+    opacity: 0;
+  }
+
+  .hover-hide {
+    opacity: 0;
+    text-decoration: none;
+  }
+
+  ::after {
+    transform: scaleX(1);
+    transform-origin: left top;
+  }
+}
+
+.marquee {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+  height: 100%;
+}
+
+.marquee__inner {
+  width: fit-content;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  --offset: 1rem;
+  --move-initial: calc(-25% + var(--offset) * -1);
+  --move-final: calc(-50% + var(--offset) * -1);
+  transform: translate3d(var(--move-initial), 0, 0);
+  animation: marquee 1.5s linear infinite;
+  animation-play-state: paused;
+  opacity: 0;
+}
+
+.sig-marquee {
+  margin-top: var(--space-sm);
+}
+
+.sig-marquee .marquee__inner {
+  width: fit-content;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  --offset: 1rem;
+  --move-initial: calc(-25% + var(--offset) * -1);
+  --move-final: calc(-50% + var(--offset) * -1);
+  transform: translate3d(var(--move-initial), 0, 0);
+  animation: marquee 6s linear infinite;
+  animation-play-state: paused;
+  opacity: 0;
+}
+
+.button--habitat .marquee__inner {
+  animation-play-state: running;
+  opacity: 1;
+  transition-duration: 0.5s;
+}
+
+.marquee span {
+  text-align: center;
+  white-space: nowrap;
+  padding: var(--space-sm) var(--space-xxs);
+  color: var(--color-black);
+  // text-transform: uppercase;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate3d(var(--move-initial), 0, 0);
+  }
+
+  100% {
+    transform: translate3d(var(--move-final), 0, 0);
+  }
+}
+
+.instructions {
+  font-size: 18px;
+}
+
+img {
+  max-width: unset;
+}
+
+a {
+  text-decoration: unset;
+}

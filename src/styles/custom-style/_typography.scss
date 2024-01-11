@@ -1,0 +1,306 @@
+// --------------------------------
+
+// (START) Global editor code https://codyhouse.co/ds/globals/typography
+
+// --------------------------------
+
+:root {
+  // font family
+  --font-primary: "PPTelegraf", system-ui, sans-serif;
+  --font-secondary: "PPMigra", system-ui, serif;
+  // font size
+  --text-base-size: 1.08rem; // body font-size
+  --text-scale-ratio: 1.2; // multiplier used to generate the type scale values 👇
+
+  // line-height
+  --body-line-height: 1.4;
+  --heading-line-height: 1.2;
+
+  // capital letters - used in combo with the lhCrop mixin
+  --font-primary-capital-letter: 1;
+
+  // unit - don't modify unless you want to change the typography unit (e.g., from Rem to Em units)
+  --text-unit: var(--text-base-size); // if Em units → --text-unit: 1em;
+}
+
+:root,
+* {
+  // type scale
+  --text-xs: calc(
+    (var(--text-unit) / var(--text-scale-ratio)) / var(--text-scale-ratio)
+  );
+  --text-sm: calc(var(--text-xs) * var(--text-scale-ratio));
+  --text-md: calc(
+    var(--text-sm) * var(--text-scale-ratio) * var(--text-scale-ratio)
+  );
+  --text-lg: calc(var(--text-md) * var(--text-scale-ratio));
+  --text-xl: calc(var(--text-lg) * var(--text-scale-ratio));
+  --text-xxl: calc(var(--text-xl) * var(--text-scale-ratio));
+  --text-xxxl: calc(var(--text-xxl) * var(--text-scale-ratio));
+  --text-xxxxl: calc(var(--text-xxxl) * var(--text-scale-ratio));
+}
+
+//  'xl': 90rem,  // ~1440px
+// 'xxl': 100rem,  // ~1600px
+// 'xxxl': 110rem,  // ~1760px
+// 'xxxxl': 140rem  // ~1920px
+
+@include breakpoint(md) {
+  :root {
+    --text-base-size: 1.25rem;
+    --text-scale-ratio: 1.25;
+  }
+}
+
+// 1440
+@include breakpoint(xl) {
+  :root {
+    --text-base-size: 1.2rem;
+    --text-scale-ratio: 1.3333;
+  }
+}
+
+// 1600px
+@include breakpoint(xxl) {
+  :root {
+    --text-base-size: 1.25rem;
+    --text-scale-ratio: 1.35;
+  }
+}
+
+// 1760
+@include breakpoint(xxxl) {
+  :root {
+    --text-base-size: 1.35rem;
+    --text-scale-ratio: 1.35;
+  }
+}
+
+// 1920
+@include breakpoint(xxxxl) {
+  :root {
+    --text-base-size: 1.41rem;
+    --text-scale-ratio: 1.5;
+  }
+}
+
+body {
+  font-family: var(--font-primary);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-primary);
+  --heading-font-weight: 400;
+}
+
+// font family
+.font-primary {
+  font-family: var(--font-primary);
+}
+
+// --------------------------------
+
+// (END) Global editor code
+
+// --------------------------------
+
+:root {
+  --uppercase-letter-spacing: 0.15rem;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.link {
+  text-decoration: none;
+  background-image: linear-gradient(
+    to right,
+    currentColor 50%,
+    alpha(var(--color-contrast-higher), 0.15) 50%
+  );
+  background-size: 200% 1px;
+  background-repeat: no-repeat;
+  background-position: 100% 100%;
+  transition: background-position 0.2s;
+
+  &:hover {
+    background-position: 0% 100%;
+  }
+}
+
+mark {
+  background-color: alpha(var(--color-accent), 0.2);
+  color: inherit;
+}
+
+.text-component {
+  --line-height-multiplier: 1;
+  --text-space-y-multiplier: 1;
+
+  > * {
+    // use Em units
+    --text-unit: 1em;
+    --space-unit: 1em;
+  }
+
+  blockquote {
+    padding-left: 1em;
+    border-left: 4px solid var(--color-contrast-lower);
+    font-style: italic;
+  }
+
+  hr {
+    background: var(--color-contrast-lower);
+    height: 1px;
+  }
+
+  figcaption {
+    font-size: var(--text-sm);
+    color: var(--color-contrast-low);
+  }
+}
+
+.article {
+  // e.g., blog posts
+  --body-line-height: 1.58; // set body line-height
+  --text-space-y-multiplier: 1.2; // control vertical spacing
+}
+
+/** Custom Fonts */
+$font-path: "../../fonts" !default;
+
+// PPTelegraf Regular & Bold
+@font-face {
+  font-family: "PPTelegraf";
+  src: url("../../fonts/PPTelegraf-Regular.woff2") format("woff2"),
+    url("../../fonts/PPTelegraf-Regular.woff") format("woff"),
+    url("../../fonts/PPTelegraf-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "PPTelegraf";
+  src: url("../../fonts/PPTelegraf-Bold.woff2") format("woff2"),
+    url("../../fonts/PPTelegraf-Bold.woff") format("woff"),
+    url("../../fonts/PPTelegraf-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "PPTelegraf";
+  src: url("../../fonts/PPTelegraf-UltraBold.woff2") format("woff2"),
+    url("../../fonts/PPTelegraf-UltraBold.woff") format("woff"),
+    url("../../fonts/PPTelegraf-UltraBold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: "PPMigra";
+  src: url("../../fonts/PPMigra-Regular.woff2") format("woff2"),
+    url("../../fonts/PPMigra-Regular.woff") format("woff"),
+    url("../../fonts/PPMigra-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "PPMigra-Italic";
+  src: url("../../fonts/PPMigra-Italic.woff2") format("woff2"),
+    url("../../fonts/PPMigra-Italic.woff") format("woff"),
+    url("../../fonts/PPMigra-Italic.ttf") format("truetype");
+  font-style: italic;
+}
+
+.font-secondary {
+  font-family: var(--font-secondary) !important;
+
+  &.italic {
+    font-family: "PPMigra-Italic", serif;
+    font-style: italic;
+  }
+}
+
+.font-ultrabold {
+  font-weight: 900;
+}
+
+.all-caps {
+  font-size: var(--text-xs);
+  letter-spacing: var(--uppercase-letter-spacing);
+  text-transform: uppercase;
+}
+
+.text-component {
+  ul,
+  ol {
+    --list-offset: calc(
+      var(--list-bullet-size) + var(--list-bullet-margin-right)
+    );
+
+    ul,
+    ol {
+      padding-left: 0;
+    }
+
+    li {
+      padding-left: var(--list-offset);
+      text-indent: -13px;
+      padding-bottom: var(--space-xxs);
+    }
+
+    li::before {
+      display: initial;
+      justify-content: center;
+      align-items: center;
+
+      width: var(--list-bullet-size);
+      height: var(--list-bullet-size);
+      vertical-align: middle;
+      position: relative;
+      top: -0.1em;
+      left: calc(var(--list-bullet-margin-right) * -1);
+      margin-left: calc(var(--list-bullet-size) * -1);
+    }
+  }
+
+  ul {
+    --list-bullet-size: 7px; // dot width and height
+    --list-bullet-margin-right: 12px; // gap between bullet and content
+
+    > li::before {
+      // bullet
+      content: "";
+      border-radius: 50%;
+      color: var(--color-contrast-high); // bullet color
+      background-color: currentColor;
+    }
+
+    ul li::before {
+      background-color: transparent;
+      box-shadow: inset 0 0 0 2px currentColor;
+    }
+  }
+}
+
+.list,
+.list--ul,
+.list--ol {
+  text-indent: 0 !important;
+}
+
+.text-component {
+  .list--ol,
+  .list--ul {
+    li {
+      text-indent: 0 !important;
+    }
+  }
+}
