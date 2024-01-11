@@ -6,8 +6,8 @@
 
 :root {
   // font family
-  --font-primary: "PPTelegraf", system-ui, sans-serif;
-  --font-secondary: "PPMigra", system-ui, serif;
+  --font-primary: "open sans", system-ui, sans-serif;
+  --font-secondary: "open sans", system-ui, sans-serif;
   // font size
   --text-base-size: 1.08rem; // body font-size
   --text-scale-ratio: 1.2; // multiplier used to generate the type scale values 👇
@@ -169,67 +169,6 @@ mark {
   // e.g., blog posts
   --body-line-height: 1.58; // set body line-height
   --text-space-y-multiplier: 1.2; // control vertical spacing
-}
-
-/** Custom Fonts */
-$font-path: "../../fonts" !default;
-
-// PPTelegraf Regular & Bold
-@font-face {
-  font-family: "PPTelegraf";
-  src: url("../../fonts/PPTelegraf-Regular.woff2") format("woff2"),
-    url("../../fonts/PPTelegraf-Regular.woff") format("woff"),
-    url("../../fonts/PPTelegraf-Regular.ttf") format("truetype");
-  font-style: normal;
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: "PPTelegraf";
-  src: url("../../fonts/PPTelegraf-Bold.woff2") format("woff2"),
-    url("../../fonts/PPTelegraf-Bold.woff") format("woff"),
-    url("../../fonts/PPTelegraf-Bold.ttf") format("truetype");
-  font-style: normal;
-  font-weight: 700;
-}
-
-@font-face {
-  font-family: "PPTelegraf";
-  src: url("../../fonts/PPTelegraf-UltraBold.woff2") format("woff2"),
-    url("../../fonts/PPTelegraf-UltraBold.woff") format("woff"),
-    url("../../fonts/PPTelegraf-UltraBold.ttf") format("truetype");
-  font-style: normal;
-  font-weight: 900;
-}
-
-@font-face {
-  font-family: "PPMigra";
-  src: url("../../fonts/PPMigra-Regular.woff2") format("woff2"),
-    url("../../fonts/PPMigra-Regular.woff") format("woff"),
-    url("../../fonts/PPMigra-Regular.ttf") format("truetype");
-  font-style: normal;
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: "PPMigra-Italic";
-  src: url("../../fonts/PPMigra-Italic.woff2") format("woff2"),
-    url("../../fonts/PPMigra-Italic.woff") format("woff"),
-    url("../../fonts/PPMigra-Italic.ttf") format("truetype");
-  font-style: italic;
-}
-
-.font-secondary {
-  font-family: var(--font-secondary) !important;
-
-  &.italic {
-    font-family: "PPMigra-Italic", serif;
-    font-style: italic;
-  }
-}
-
-.font-ultrabold {
-  font-weight: 900;
 }
 
 .all-caps {

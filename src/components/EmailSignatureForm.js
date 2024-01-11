@@ -3,45 +3,8 @@ import { Fade } from "react-reveal";
 import GeneratedSignature from "./GeneratedSignature";
 import CopyToClipboard from "react-copy-to-clipboard";
 import ReactDOMServer from "react-dom/server";
-import VideoComponent from "./VideoComponent";
 import loadinganimation from "../video/Habitat-Logo-Animation-V2.mp4";
-
-// Import all images from the "../img/culture" folder
-const contextC = require.context("../img/culture", false, /\.(jpg|jpeg|png)$/);
-const cultureImages = {};
-contextC.keys().forEach((key) => {
-  const fileName = key.replace("./", "");
-  cultureImages[fileName] = contextC(key);
-});
-let usedImages = [];
-
-// Function to get two unique random images from the array
-const getRandomCultureImages = () => {
-  let availableImages = Object.values(cultureImages);
-
-  // Remove images that have already been used
-  availableImages = availableImages.filter(
-    (image) => !usedImages.includes(image)
-  );
-
-  // If all images have been used, reset the used images array
-  if (availableImages.length < 2) {
-    usedImages = [...Object.values(cultureImages)];
-    availableImages = [...Object.values(cultureImages)];
-  }
-
-  // Select two random images from the available images
-  const randomIndex1 = Math.floor(Math.random() * availableImages.length);
-  const image1 = availableImages[randomIndex1];
-  availableImages.splice(randomIndex1, 1);
-
-  const randomIndex2 = Math.floor(Math.random() * availableImages.length);
-  const image2 = availableImages[randomIndex2];
-
-  // Mark the selected images as used
-  usedImages.push(image1, image2);
-  return [image1, image2];
-};
+import logo from "../img/URGO-logo.jpg";
 
 // Import employee headshots
 const employeeHeadshots = {};
@@ -63,14 +26,9 @@ function EmailSignatureForm() {
     lastName: "",
     jobTitle: "",
     phoneNumber: "",
+    emailAddress: "",
     color: "#D4DFD7",
   });
-  const [cultureImages, setCultureImages] = useState([]);
-
-  useEffect(() => {
-    // Call getRandomCultureImages once when the component mounts
-    setCultureImages(getRandomCultureImages());
-  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -83,10 +41,10 @@ function EmailSignatureForm() {
       // Enforce the character limit of 10
       const truncatedPhoneNumber = numericPhoneNumber.slice(0, 10);
 
-      // Format the truncated phone number as ###.###.###
+      // Format the truncated phone number as (###) ###-####
       const formattedPhoneNumber = truncatedPhoneNumber.replace(
         /(\d{3})(\d{3})(\d{4})/,
-        "$1.$2.$3"
+        "($1) $2-$3"
       );
 
       setFormData({
@@ -99,13 +57,6 @@ function EmailSignatureForm() {
         [name]: value,
       });
     }
-  };
-
-  const handleColorClick = (color) => {
-    setFormData({
-      ...formData,
-      color,
-    });
   };
 
   const handleSubmit = (e) => {
@@ -131,12 +82,11 @@ function EmailSignatureForm() {
                 phoneNumber={formData.phoneNumber}
                 emailAddress={formData.emailAddress}
                 address={formData.address}
-                color={formData.color} // Pass the color prop
                 employeeImage={employeeImage.default} // Pass the background image
               />
             );
             setLoading(false);
-          }, 4000);
+          }, 1500);
         })
         .catch(() => {
           // Handle the case where the image doesn't exist
@@ -159,10 +109,11 @@ function EmailSignatureForm() {
         lastName: "",
         jobTitle: "",
         phoneNumber: "",
+        emailAddress: "",
         color: "#D4DFD7",
       });
       setLoading(false); // Set loading back to false after the delay
-    }, 4000); // Adjust the timeout duration as needed
+    }, 1500); // Adjust the timeout duration as needed
   };
 
   const handleCopyToClipboard = () => {
@@ -172,12 +123,16 @@ function EmailSignatureForm() {
   };
 
   return (
-    <div className="container max-width-xl">
-      <div className="grid gap-lg justify-center">
+    <div className="container max-width-lg height-100vh">
+      <div className="grid gap-lg flex items-center justify-center height-100%">
         {loading ? (
-          <video className="loader" autoPlay loop muted>
-            <source src={loadinganimation} type="video/mp4" />
-          </video>
+          <section class="height-100vh width-100% position-relative flex justify-center items-center">
+            <div class="loader">
+              <div class="circle item0"></div>
+              <div class="circle item1"></div>
+              <div class="circle item2"></div>
+            </div>
+          </section>
         ) : results ? (
           <>
             <Fade top cascade>
@@ -205,30 +160,6 @@ function EmailSignatureForm() {
                         }}
                       >
                         <p>{results}</p>
-                      </div>
-                    </div>
-
-                    <div>
-                      <div className="buttons-component sig-marquee">
-                        <button className="btn button--habitat width-100%">
-                          <span>Nice Headshot</span>
-                          <div className="marquee" aria-hidden="true">
-                            <div className="marquee__inner">
-                              <span>Nice Headshot</span>
-                              <span>Nice Headshot</span>
-                              <span>Nice Headshot</span>
-                              <span>Nice Headshot</span>
-                              <span>Nice Headshot</span>
-                              <span>Nice Headshot</span>
-                              <span>Nice Headshot</span>
-                              <span>Nice Headshot</span>
-                              <span>Nice Headshot</span>
-                              <span>Nice Headshot</span>
-                              <span>Nice Headshot</span>
-                              <span>Nice Headshot</span>
-                            </div>
-                          </div>
-                        </button>
                       </div>
                     </div>
                   </Fade>
@@ -285,46 +216,34 @@ function EmailSignatureForm() {
           </>
         ) : (
           <>
-            <div className="col margin-top-lg">
+            <div className="col margin-top-lg ">
               <Fade left>
-                <div className="grid gap-md margin-bottom-0">
-                  <div
-                    className="col radius-lg  aspect-ratio-5:4"
-                    style={{
-                      overflow: "hidden",
-                    }}
-                  >
-                    <VideoComponent />
+                <div className="grid margin-bottom-0 height-100% flex justify-center items-center">
+                  <div className="col radius-lg  aspect-ratio-5:4 ">
+                    <img
+                      src={logo}
+                      alt=""
+                      style={{
+                        objectFit: "contain",
+                        maxWidth: "450px",
+                      }}
+                    ></img>
                   </div>
-                </div>
-              </Fade>
-
-              <Fade left cascade>
-                <div className="grid gap-md">
-                  {cultureImages.map((image, index) => {
-                    console.log(image); // Log the image path
-                    return (
-                      <div
-                        key={index}
-                        className="col radius-lg"
-                        style={{
-                          backgroundImage: `url(${image.default})`,
-                          backgroundSize: "cover",
-                          backgroundPosition: "center",
-                          height: "250px",
-                        }}
-                      ></div>
-                    );
-                  })}
                 </div>
               </Fade>
             </div>
 
-            <div className="col margin-top-lg">
+            <div
+              className="col margin-top-lg padding-md "
+              style={{ backgroundColor: "#EFF9FB", borderRadius: "30px" }}
+            >
               <Fade bottom>
-                <h1 className="font-secondary text-lg ">
+                <h1 className="font-secondary text-lg text-center">
                   Email Signature Generator
                 </h1>
+                <p className="text-center margin-top-xxs">
+                  Fill out the form below to create your signature
+                </p>
               </Fade>
 
               <div id="emailsigform" className="margin-top-md">
@@ -370,8 +289,20 @@ function EmailSignatureForm() {
                       />
                     </div>
                     <div>
+                      <label className="block" htmlFor="email">
+                        Your Email
+                      </label>
+                      <input
+                        type="text"
+                        id="email"
+                        name="emailAddress"
+                        value={formData.emailAddress}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div>
                       <label className="block" htmlFor="phone-number">
-                        Your Phone Number (Optional)
+                        Your Phone Number
                       </label>
                       <input
                         type="tel"
@@ -381,126 +312,10 @@ function EmailSignatureForm() {
                         onChange={handleChange}
                       />
                     </div>
+
                     <div>
-                      <label className="block">
-                        Select your background color:
-                      </label>
-                      <div className="grid gap-sm">
-                        <Fade bottom cascade>
-                          <div className="col">
-                            <div
-                              className={`radio-container bg-mint radius-md padding-left-lg padding-right-sm padding-y-xs margin-y-sm  ${
-                                formData.color === "#D4DFD7" ? "selected" : ""
-                              }`}
-                              onClick={() => handleColorClick("#D4DFD7")}
-                            >
-                              <input
-                                type="radio"
-                                id="mint"
-                                name="color"
-                                value="Mint"
-                                checked={formData.color === "#D4DFD7"}
-                                onChange={handleChange}
-                              />
-                              <label htmlFor="mint">Mint</label>
-                              <span className="agency-radio"></span>
-                            </div>
-
-                            <div
-                              className={`radio-container bg-coral radius-md padding-left-lg padding-right-sm padding-y-xs margin-y-sm  ${
-                                formData.color === "#F3B5AC" ? "selected" : ""
-                              }`}
-                              onClick={() => handleColorClick("#F3B5AC")}
-                            >
-                              <input
-                                type="radio"
-                                id="coral"
-                                name="color"
-                                value="Coral"
-                                checked={formData.color === "#F3B5AC"}
-                                onChange={handleChange}
-                              />
-                              <label htmlFor="coral">Coral</label>
-                              <span className="agency-radio"></span>
-                            </div>
-
-                            <div
-                              className={`radio-container bg-apricot radius-md padding-left-lg padding-right-sm padding-y-xs margin-y-sm  ${
-                                formData.color === "#EFCEAC" ? "selected" : ""
-                              }`}
-                              onClick={() => handleColorClick("#EFCEAC")}
-                            >
-                              <input
-                                type="radio"
-                                id="apricot"
-                                name="color"
-                                value="Apricot"
-                                checked={formData.color === "#EFCEAC"}
-                                onChange={handleChange}
-                              />
-                              <label htmlFor="apricot">Apricot</label>
-                              <span className="agency-radio"></span>
-                            </div>
-                          </div>
-                          <div className="col">
-                            <div
-                              className={`radio-container bg-mist radius-md padding-left-lg padding-right-sm padding-y-xs margin-y-sm  ${
-                                formData.color === "#D3DCE4" ? "selected" : ""
-                              }`}
-                              onClick={() => handleColorClick("#D3DCE4")}
-                            >
-                              <input
-                                type="radio"
-                                id="mist"
-                                name="color"
-                                value="Mist"
-                                checked={formData.color === "#D3DCE4"}
-                                onChange={handleChange}
-                              />
-                              <label htmlFor="mist">Mist</label>
-                              <span className="agency-radio"></span>
-                            </div>
-
-                            <div
-                              className={`radio-container bg-lavender radius-md padding-left-lg padding-right-sm padding-y-xs margin-y-sm  ${
-                                formData.color === "#BCA1D3" ? "selected" : ""
-                              }`}
-                              onClick={() => handleColorClick("#BCA1D3")}
-                            >
-                              <input
-                                type="radio"
-                                id="lavender"
-                                name="color"
-                                value="Lavender"
-                                checked={formData.color === "#BCA1D3"}
-                                onChange={handleChange}
-                              />
-                              <label htmlFor="lavender">Lavender</label>
-                              <span className="agency-radio"></span>
-                            </div>
-
-                            <div
-                              className={`radio-container bg-accent radius-md padding-left-lg padding-right-sm padding-y-xs margin-y-sm  ${
-                                formData.color === "#D0C4B7" ? "selected" : ""
-                              }`}
-                              onClick={() => handleColorClick("#D0C4B7")}
-                            >
-                              <input
-                                type="radio"
-                                id="tan"
-                                name="color"
-                                value="Tan"
-                                checked={formData.color === "#D0C4B7"}
-                                onChange={handleChange}
-                              />
-                              <label htmlFor="tan">Tan</label>
-                              <span className="agency-radio"></span>
-                            </div>
-                          </div>
-                        </Fade>
-                      </div>
                       <button
-                        className="btn btn--primary padding-y-xs"
+                        className="btn btn--primary padding-y-xs margin-top-sm"
                         type="submit"
                       >
                         Generate Signature

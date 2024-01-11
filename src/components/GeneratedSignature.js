@@ -61,15 +61,6 @@ function GeneratedSignature({
               width="150"
             />
           </a>
-          {phoneNumber && (
-            <p
-              className="hide-if-no-phone-number"
-              style={{
-                borderTop: "1px solid rgba(0,0,0,0.1)",
-                margin: "8px 0",
-              }}
-            ></p>
-          )}
           <p
             style={{
               fontSize: "14px",
@@ -79,6 +70,16 @@ function GeneratedSignature({
             }}
           >
             {phoneNumber}
+          </p>
+          <p
+            style={{
+              fontSize: "14px",
+              margin: 0,
+              fontFamily: "Arial, Helvetica, sans-serif",
+              color: "#070F0B",
+            }}
+          >
+            {emailAddress}
           </p>
           <p
             style={{
