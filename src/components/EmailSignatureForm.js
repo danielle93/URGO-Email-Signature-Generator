@@ -18,7 +18,7 @@ context.keys().forEach((key) => {
 });
 function EmailSignatureForm() {
   const [loading, setLoading] = useState(false);
-  const [results, setResults] = useState(true); //Dani change this back to null
+  const [results, setResults] = useState(null); //Dani change this back to null
   const [copied, setCopied] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
