@@ -9,6 +9,14 @@ function GeneratedSignature({
   employeeImage,
   color,
 }) {
+  const conditionalStyles = `
+    <!--[if (gte mso 9)|(IE)]>
+      <style type="text/css">
+        table {width: 430px !important;}
+        td {width: 110px !important;}
+      </style>
+    <![endif]-->
+  `;
   return (
     <table
       className="generatedSignature"
@@ -18,9 +26,10 @@ function GeneratedSignature({
       width="430"
       style={{ height: "10px" }}
     >
+      {/* <div dangerouslySetInnerHTML={{ __html: conditionalStyles }} /> */}
       <tbody>
         <tr>
-          <td width="130" rowSpan="10">
+          <td width="50" rowSpan="10">
             <p style={{ textAlign: "center" }}>
               <img
                 width="110"
@@ -33,7 +42,7 @@ function GeneratedSignature({
 
             <p>
               <img
-                width="120"
+                width="105"
                 className="logo"
                 src="https://staging-agencyhabitat23-staging.kinsta.cloud/wp-content/uploads/2024/01/URGO-logo-email_.png"
                 alt="Logo 2"
@@ -41,20 +50,21 @@ function GeneratedSignature({
             </p>
           </td>
           <td
-            width="5"
+            width="15"
             rowSpan="10"
             style={{ borderRight: "1px solid #003865" }}
           >
-            &nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;
           </td>
 
-          <td width="12" rowSpan="10">
-            &nbsp;
+          <td width="15" rowSpan="10">
+            &nbsp;&nbsp;&nbsp;&nbsp;
           </td>
         </tr>
 
         <tr>
           <td
+            width="100%"
             style={{
               fontWeight: "bold",
               fontFamily: "helvetica, sans-serif",
@@ -67,6 +77,7 @@ function GeneratedSignature({
         </tr>
         <tr>
           <td
+            width="100%"
             style={{
               fontFamily: "helvetica, sans-serif",
               color: "#003865",
@@ -79,6 +90,7 @@ function GeneratedSignature({
         </tr>
         <tr>
           <td
+            width="100%"
             style={{
               fontFamily: "helvetica, sans-serif",
               color: "#003865",
@@ -91,6 +103,7 @@ function GeneratedSignature({
         </tr>
         <tr>
           <td
+            width="100%"
             style={{
               fontFamily: "helvetica, sans-serif",
               color: "#003865",
@@ -103,6 +116,7 @@ function GeneratedSignature({
         </tr>
         <tr>
           <td
+            width="100%"
             style={{
               fontFamily: "helvetica, sans-serif",
               color: "#003865",
@@ -120,6 +134,7 @@ function GeneratedSignature({
         </tr>
         <tr>
           <td
+            width="100%"
             style={{
               fontFamily: "helvetica, sans-serif",
               color: "#003865",
@@ -137,6 +152,7 @@ function GeneratedSignature({
         </tr>
         <tr>
           <td
+            width="100%"
             style={{
               fontFamily: "helvetica, sans-serif",
               color: "#003865",
@@ -144,11 +160,13 @@ function GeneratedSignature({
               fontWeight: "normal",
             }}
           >
-            100 Lexington Street, Suite 400
+            100 <span style={{ display: "none" }}> -</span>Lexington
+            <span style={{ display: "none" }}> -</span>Street, Suite 400
           </td>
         </tr>
         <tr>
           <td
+            width="100%"
             style={{
               fontFamily: "helvetica, sans-serif",
               color: "#003865",
@@ -156,11 +174,14 @@ function GeneratedSignature({
               fontWeight: "normal",
             }}
           >
-            Fort Worth, TX 76102
+            Fort <span style={{ display: "none" }}> -</span>Worth,
+            <span style={{ display: "none" }}> -</span>TX 76102
+            <span style={{ display: "none" }}> -</span>
           </td>
         </tr>
         <tr>
           <td
+            width="100%"
             style={{
               fontFamily: "helvetica, sans-serif",
               color: "#003865",
