@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Fade } from "react-reveal";
 import GeneratedSignature from "./GeneratedSignature";
-import CopyToClipboard from "react-copy-to-clipboard";
-import ReactDOMServer from "react-dom/server";
 import logo from "../img/URGO-logo.jpg";
 
 // Import employee headshots
@@ -18,7 +16,7 @@ context.keys().forEach((key) => {
 });
 function EmailSignatureForm() {
   const [loading, setLoading] = useState(false);
-  const [results, setResults] = useState(null); //Dani change this back to null
+  const [results, setResults] = useState(true); //Dani change this back to null
   const [copied, setCopied] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
@@ -116,19 +114,39 @@ function EmailSignatureForm() {
   };
 
   const handleCopyToClipboard = () => {
-    const htmlContent = ReactDOMServer.renderToStaticMarkup(results);
-    navigator.clipboard.writeText(htmlContent);
-    setCopied(true);
+    const content = document.getElementById("content");
+    const range = document.createRange();
+    const selection = window.getSelection();
+
+    range.selectNodeContents(content);
+    selection.removeAllRanges();
+    selection.addRange(range);
+
+    try {
+      // Attempt to copy the selected content
+      const success = document.execCommand("copy");
+
+      if (success) {
+        console.log("Content copied to clipboard");
+        // You may want to set a state variable or perform other actions here
+      } else {
+        console.error("Unable to copy content to clipboard");
+        // Handle the case where copying fails
+      }
+    } catch (err) {
+      console.error("Error copying content to clipboard:", err);
+      // Handle any errors that may occur during copying
+    }
   };
 
   return (
     <div className="container height-100vh">
       {loading ? (
-        <section class="height-100vh width-100% position-relative flex justify-center items-center">
-          <div class="loader">
-            <div class="circle item0"></div>
-            <div class="circle item1"></div>
-            <div class="circle item2"></div>
+        <section className="height-100vh width-100% position-relative flex justify-center items-center">
+          <div className="loader">
+            <div className="circle item0"></div>
+            <div className="circle item1"></div>
+            <div className="circle item2"></div>
           </div>
         </section>
       ) : results ? (
@@ -137,7 +155,7 @@ function EmailSignatureForm() {
             <Fade top cascade>
               <div className="grid gap-md justify-center margin-y-0">
                 <div className="col-12 margin-bottom-sm">
-                  <div class="flex justify-between items-center padding-y-sm">
+                  <div className="flex justify-between items-center padding-y-sm">
                     <img
                       src={logo}
                       alt=""
@@ -157,7 +175,7 @@ function EmailSignatureForm() {
                 <div className="col ">
                   <Fade top cascade>
                     <div
-                      className="tableContainer padding-lg height-100%"
+                      className="tableContainer padding-xl height-100%"
                       style={{
                         background: "#EFF9FB",
                         borderRadius: "30px",
@@ -165,10 +183,175 @@ function EmailSignatureForm() {
                     >
                       <div
                         style={{
-                          width: "fit-content",
+                          width: "100%",
+                          height: "100%",
                           margin: "0 auto",
+                          background: "white",
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
                         }}
+                        id="content"
+                        className="highlightable"
                       >
+                        <table style={{ width: 430, height: 10 }}>
+                          <tbody>
+                            <tr>
+                              <td width={130} rowSpan={10}>
+                                <p style={{ textAlign: "center" }}>
+                                  <img
+                                    width={110}
+                                    className="logo"
+                                    src="https://staging-agencyhabitat23-staging.kinsta.cloud/wp-content/uploads/2024/01/Abby-Cantwell_Dec2022_Cropped.png"
+                                    alt="Logo 1"
+                                  />
+                                </p>
+
+                                <p>
+                                  <img
+                                    width={110}
+                                    className="logo"
+                                    src="https://staging-agencyhabitat23-staging.kinsta.cloud/wp-content/uploads/2024/01/URGO-logo-email_.png"
+                                    alt="Logo 2"
+                                  />
+                                </p>
+                              </td>
+                              <td
+                                width={5}
+                                rowSpan={10}
+                                style={{ borderRight: "1px solid #003865" }}
+                              >
+                                &nbsp;
+                              </td>
+                              <td width={12} rowSpan={10}>
+                                &nbsp;
+                              </td>
+                            </tr>
+                            <tr>
+                              <td
+                                style={{
+                                  fontWeight: "bold",
+                                  fontFamily: "helvetica, sans-serif",
+                                  color: "#003865",
+                                  fontSize: 22,
+                                }}
+                              >
+                                John Appleseed
+                              </td>
+                            </tr>
+                            <tr>
+                              <td
+                                style={{
+                                  fontFamily: "helvetica, sans-serif",
+                                  color: "#003865",
+                                  fontSize: 16,
+                                  fontWeight: "normal",
+                                }}
+                              >
+                                Chief Executive Officer
+                              </td>
+                            </tr>
+                            <tr>
+                              <td
+                                style={{
+                                  fontFamily: "helvetica, sans-serif",
+                                  color: "#003865",
+                                  fontSize: 14,
+                                  fontWeight: "normal",
+                                }}
+                              >
+                                Urgo Medical North America
+                              </td>
+                            </tr>
+                            <tr>
+                              <td
+                                style={{
+                                  fontFamily: "helvetica, sans-serif",
+                                  color: "#003865",
+                                  fontSize: 8,
+                                  fontWeight: "normal",
+                                }}
+                              >
+                                &nbsp;
+                              </td>
+                            </tr>
+                            <tr>
+                              <td
+                                style={{
+                                  fontFamily: "helvetica, sans-serif",
+                                  color: "#003865",
+                                  fontSize: 14,
+                                  fontWeight: "normal",
+                                }}
+                              >
+                                <a
+                                  style={{ color: "#003865" }}
+                                  href="tel:0000000000"
+                                >
+                                  (000) 000-0000
+                                </a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td
+                                style={{
+                                  fontFamily: "helvetica, sans-serif",
+                                  color: "#003865",
+                                  fontSize: 14,
+                                  fontWeight: "normal",
+                                }}
+                              >
+                                <a
+                                  style={{ color: "#003865" }}
+                                  href="mailto:john.appleseed@us.urgo.com"
+                                >
+                                  john.appleseed@us.urgo.com
+                                </a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td
+                                style={{
+                                  fontFamily: "helvetica, sans-serif",
+                                  color: "#003865",
+                                  fontSize: 14,
+                                  fontWeight: "normal",
+                                }}
+                              >
+                                100 Lexington Street, Suite 400
+                              </td>
+                            </tr>
+                            <tr>
+                              <td
+                                style={{
+                                  fontFamily: "helvetica, sans-serif",
+                                  color: "#003865",
+                                  fontSize: 14,
+                                  fontWeight: "normal",
+                                }}
+                              >
+                                Fort Worth, TX 76102
+                              </td>
+                            </tr>
+                            <tr>
+                              <td
+                                style={{
+                                  fontFamily: "helvetica, sans-serif",
+                                  color: "#003865",
+                                  fontSize: 14,
+                                  fontWeight: "normal",
+                                }}
+                              >
+                                <a
+                                  style={{ color: "#003865" }}
+                                  href="https://urgomedical.us"
+                                >
+                                  urgomedical.us
+                                </a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                         <p>{results}</p>
                       </div>
                     </div>
@@ -207,14 +390,13 @@ function EmailSignatureForm() {
                     </ul>
                   </div>
                   <div className="text-right">
-                    <CopyToClipboard
-                      text={results}
-                      onCopy={handleCopyToClipboard}
+                    <button
+                      onClick={handleCopyToClipboard}
+                      className="margin-top-md btn btn--primary padding-y-xs margin-right-sm"
+                      id="highlightButton"
                     >
-                      <button className="margin-top-md btn btn--primary padding-y-xs margin-right-sm">
-                        {copied ? "HTML Copied!" : "Copy to Clipboard"}
-                      </button>
-                    </CopyToClipboard>
+                      {copied ? "HTML Copied!" : "Copy to Clipboard"}
+                    </button>
                     <Fade top cascade>
                       <button
                         className="margin-top-md btn btn--primary padding-y-xs"

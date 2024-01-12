@@ -1,9 +1,4 @@
 import React from "react";
-// import logo from "../img/agency-hab-logo-50.png";
-import facebookIcon from "../img/facebook.png";
-import tiktokIcon from "../img/tiktok.png";
-import instagramIcon from "../img/instagram.png";
-import linkedinIcon from "../img/linkedin.png";
 
 function GeneratedSignature({
   fullName,
@@ -21,166 +16,167 @@ function GeneratedSignature({
       cellPadding="0"
       border="0"
       width="430"
-      style={{
-        borderCollapse: "separate",
-        borderSpacing: "8px",
-      }}
+      style={{ height: "10px" }}
     >
-      <tr>
-        {/* Top Left Quadrant: Logo */}
-        <td>
-          <img
-            src={employeeImage}
-            alt="Agency Habitat"
-            style={{
-              objectFit: "cover",
-              overflow: "hidden",
-              display: "block",
-              borderRadius: "30px",
-            }}
-            width="215"
-          />
-        </td>
+      <tbody>
+        <tr>
+          <td width="130" rowSpan="10">
+            <p style={{ textAlign: "center" }}>
+              <img
+                width="110"
+                className="logo"
+                src="https://staging-agencyhabitat23-staging.kinsta.cloud/wp-content/uploads/2024/01/Abby-Cantwell_Dec2022_Cropped.png"
+                // src={employeeImage}
+                alt="Logo 1"
+              />
+            </p>
 
-        {/* Top Right Quadrant: Social Media Icons */}
-        <td
-          style={{
-            textAlign: "left",
-            borderRadius: "30px",
-            overflow: "hidden",
-            background: "#f5f0eb",
-            padding: "0 20px",
-          }}
-        >
-          {/* Align them in a row */}
-          <a href="https://agencyhabitat.com">
-            <img
-              src="https://agencyhabitat.com/wp-content/uploads/2023/11/agency-hab-logo-50.png"
-              alt="Agency Habitat Logo"
-              border="0"
-              width="150"
-            />
-          </a>
-          <p
-            style={{
-              fontSize: "14px",
-              margin: 0,
-              fontFamily: "Arial, Helvetica, sans-serif",
-              color: "#070F0B",
-            }}
+            <p>
+              <img
+                width="120"
+                className="logo"
+                src="https://staging-agencyhabitat23-staging.kinsta.cloud/wp-content/uploads/2024/01/URGO-logo-email_.png"
+                alt="Logo 2"
+              />
+            </p>
+          </td>
+          <td
+            width="5"
+            rowSpan="10"
+            style={{ borderRight: "1px solid #003865" }}
           >
-            {phoneNumber}
-          </p>
-          <p
-            style={{
-              fontSize: "14px",
-              margin: 0,
-              fontFamily: "Arial, Helvetica, sans-serif",
-              color: "#070F0B",
-            }}
-          >
-            {emailAddress}
-          </p>
-          <p
-            style={{
-              borderTop: "1px solid rgba(0,0,0,0.1)",
-              margin: "8px 0",
-            }}
-          ></p>
-          <a
-            href="agencyhabitat.com"
-            style={{
-              fontSize: "14px",
-              fontFamily: "Arial, Helvetica, sans-serif",
-              margin: "0",
-              textDecoration: "none !important",
-              display: "inline-block",
-              textTransform: "uppercase",
-              color: "#070F0B",
-            }}
-          >
-            agencyhabitat.com
-          </a>
-          <p
-            style={{
-              borderTop: "1px solid rgba(0,0,0,0.1)",
-              margin: "6px 0",
-            }}
-          ></p>
-          <div
-            style={{
-              paddingTop: "5px",
-              textAlign: "center",
-            }}
-          >
-            <a
-              href="https://www.linkedin.com/company/agencyhabitat/"
-              style={{
-                textDecoration: "none",
-              }}
-            >
-              <img src={linkedinIcon} alt="LinkedIn" width="35" border="0" />
-            </a>
-            <a
-              href="https://www.tiktok.com/@agencyhabitat"
-              style={{
-                textDecoration: "none",
-              }}
-            >
-              <img src={tiktokIcon} alt="TikTok" width="35" border="0" />
-            </a>
+            &nbsp;
+          </td>
 
-            <a
-              href="https://www.instagram.com/agencyhabitat/"
-              style={{
-                textDecoration: "none",
-              }}
-            >
-              <img src={instagramIcon} alt="Instagram" width="35" border="0" />
-            </a>
-            <a
-              href="https://www.facebook.com/agencyhabitat"
-              style={{ textDecoration: "none" }}
-            >
-              <img src={facebookIcon} alt="Facebook" width="35" border="0" />
-            </a>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        {/* Bottom Left Quadrant: Personal Info */}
-        <td
-          colspan="2"
-          style={{
-            padding: "20px",
-            borderRadius: "30px",
-            backgroundColor: `${color}`,
-          }}
-        >
-          <p
+          <td width="12" rowSpan="10">
+            &nbsp;
+          </td>
+        </tr>
+
+        <tr>
+          <td
             style={{
-              margin: 0,
-              fontSize: "24px",
-              fontFamily: "Arial, Helvetica, sans-serif",
-              color: "#2C2C2A",
-              fontWeight: "300",
+              fontWeight: "bold",
+              fontFamily: "helvetica, sans-serif",
+              color: "#003865",
+              fontSize: "22px",
             }}
           >
             {fullName}
-          </p>
-          <p
+          </td>
+        </tr>
+        <tr>
+          <td
             style={{
-              margin: "10px 0 0 0",
-              fontSize: "14px",
-              fontFamily: "Arial, Helvetica, sans-serif",
-              color: "#2C2C2A",
-              textTransform: "uppercase",
+              fontFamily: "helvetica, sans-serif",
+              color: "#003865",
+              fontSize: "16px",
+              fontWeight: "normal",
             }}
           >
             {jobTitle}
-          </p>
-        </td>
-      </tr>
+          </td>
+        </tr>
+        <tr>
+          <td
+            style={{
+              fontFamily: "helvetica, sans-serif",
+              color: "#003865",
+              fontSize: "14px",
+              fontWeight: "normal",
+            }}
+          >
+            Urgo Medical North America
+          </td>
+        </tr>
+        <tr>
+          <td
+            style={{
+              fontFamily: "helvetica, sans-serif",
+              color: "#003865",
+              fontSize: "8px",
+              fontWeight: "normal",
+            }}
+          >
+            &nbsp;
+          </td>
+        </tr>
+        <tr>
+          <td
+            style={{
+              fontFamily: "helvetica, sans-serif",
+              color: "#003865",
+              fontSize: "14px",
+              fontWeight: "normal",
+            }}
+          >
+            <a
+              style={{ textDecoration: "underline", color: "#003865" }}
+              href="tel:0000000000"
+            >
+              {phoneNumber}
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td
+            style={{
+              fontFamily: "helvetica, sans-serif",
+              color: "#003865",
+              fontSize: "14px",
+              fontWeight: "normal",
+            }}
+          >
+            <a
+              style={{ textDecoration: "underline", color: "#003865" }}
+              href={`mailto:${emailAddress}`}
+            >
+              {emailAddress}
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td
+            style={{
+              fontFamily: "helvetica, sans-serif",
+              color: "#003865",
+              fontSize: "14px",
+              fontWeight: "normal",
+            }}
+          >
+            100 Lexington Street, Suite 400
+          </td>
+        </tr>
+        <tr>
+          <td
+            style={{
+              fontFamily: "helvetica, sans-serif",
+              color: "#003865",
+              fontSize: "14px",
+              fontWeight: "normal",
+            }}
+          >
+            Fort Worth, TX 76102
+          </td>
+        </tr>
+        <tr>
+          <td
+            style={{
+              fontFamily: "helvetica, sans-serif",
+              color: "#003865",
+              fontSize: "14px",
+              fontWeight: "normal",
+            }}
+          >
+            <a
+              style={{ textDecoration: "underline", color: "#003865" }}
+              href="https://urgomedical.us"
+            >
+              urgomedical.us
+            </a>
+          </td>
+        </tr>
+      </tbody>
     </table>
   );
 }
