@@ -3,7 +3,8 @@
 body {
   background-color: white;
 }
-h1 {
+h1,
+h2 {
   font-weight: bold;
 }
 h1,
@@ -11,6 +12,14 @@ h2,
 h3,
 p {
   color: #003865;
+}
+
+.btn--primary {
+  background-color: #003865;
+
+  &:hover {
+    background-color: #062640;
+  }
 }
 
 #emailsigform {
@@ -61,7 +70,11 @@ ul {
   list-style-type: disc;
 
   li {
-    margin-bottom: 0.5em;
+    margin-bottom: 1em;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
   }
 }
 

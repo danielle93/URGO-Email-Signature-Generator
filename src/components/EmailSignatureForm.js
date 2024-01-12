@@ -3,7 +3,6 @@ import { Fade } from "react-reveal";
 import GeneratedSignature from "./GeneratedSignature";
 import CopyToClipboard from "react-copy-to-clipboard";
 import ReactDOMServer from "react-dom/server";
-import loadinganimation from "../video/Habitat-Logo-Animation-V2.mp4";
 import logo from "../img/URGO-logo.jpg";
 
 // Import employee headshots
@@ -19,7 +18,7 @@ context.keys().forEach((key) => {
 });
 function EmailSignatureForm() {
   const [loading, setLoading] = useState(false);
-  const [results, setResults] = useState(null);
+  const [results, setResults] = useState(true); //Dani change this back to null
   const [copied, setCopied] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
@@ -123,34 +122,45 @@ function EmailSignatureForm() {
   };
 
   return (
-    <div className="container max-width-lg height-100vh">
-      <div className="grid gap-lg flex items-center justify-center height-100%">
-        {loading ? (
-          <section class="height-100vh width-100% position-relative flex justify-center items-center">
-            <div class="loader">
-              <div class="circle item0"></div>
-              <div class="circle item1"></div>
-              <div class="circle item2"></div>
-            </div>
-          </section>
-        ) : results ? (
-          <>
+    <div className="container height-100vh">
+      {loading ? (
+        <section class="height-100vh width-100% position-relative flex justify-center items-center">
+          <div class="loader">
+            <div class="circle item0"></div>
+            <div class="circle item1"></div>
+            <div class="circle item2"></div>
+          </div>
+        </section>
+      ) : results ? (
+        <>
+          <div className="grid gap-lg flex">
             <Fade top cascade>
               <div className="grid gap-md justify-center margin-y-0">
-                <div className="col-12 margin-bottom-sm margin-top-lg">
-                  <h1 className="margin-0 text-lg font-secondary ">
-                    Email Signature Generator
-                  </h1>
+                <div className="col-12 margin-bottom-sm">
+                  <div class="flex justify-between items-center padding-y-sm">
+                    <img
+                      src={logo}
+                      alt=""
+                      style={{
+                        objectFit: "contain",
+                        maxWidth: "168px",
+                      }}
+                    ></img>
+                    <h1 className="margin-0 text-lg font-secondary ">
+                      Email Signature Generator
+                    </h1>
+                  </div>
                 </div>
               </div>
 
-              <div className="grid gap-md justify-center">
-                <div className="col">
+              <div className="grid gap-md flex margin-top-xl">
+                <div className="col ">
                   <Fade top cascade>
                     <div
-                      className="tableContainer padding-lg radius-lg"
+                      className="tableContainer padding-lg height-100%"
                       style={{
-                        background: "white",
+                        background: "#EFF9FB",
+                        borderRadius: "30px",
                       }}
                     >
                       <div
@@ -167,10 +177,14 @@ function EmailSignatureForm() {
 
                 <div className="col">
                   <div
-                    className="padding-lg radius-lg"
-                    style={{ background: "#E9E3DD", color: "#070F0B" }}
+                    className="padding-lg padding-bottom-0 height-100%"
+                    style={{
+                      borderRadius: "30px",
+                      background: "#EFF9FB",
+                      color: "#003865",
+                    }}
                   >
-                    <h2 className="text-md font-secondary margin-bottom-xs">
+                    <h2 className="text-md font-secondary margin-bottom-md">
                       Instructions:
                     </h2>
                     <ul className="font-primary instructions">
@@ -213,10 +227,12 @@ function EmailSignatureForm() {
                 </div>
               </div>
             </Fade>
-          </>
-        ) : (
-          <>
-            <div className="col margin-top-lg ">
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="grid gap-lg max-width-xl margin-auto">
+            <div className="col margin-top-xl ">
               <Fade left>
                 <div className="grid margin-bottom-0 height-100% flex justify-center items-center">
                   <div className="col radius-lg  aspect-ratio-5:4 ">
@@ -234,7 +250,7 @@ function EmailSignatureForm() {
             </div>
 
             <div
-              className="col margin-top-lg padding-md "
+              className="col margin-top-xl padding-md "
               style={{ backgroundColor: "#EFF9FB", borderRadius: "30px" }}
             >
               <Fade bottom>
@@ -246,7 +262,10 @@ function EmailSignatureForm() {
                 </p>
               </Fade>
 
-              <div id="emailsigform" className="margin-top-md">
+              <div
+                id="emailsigform"
+                className="margin-top-md padding-bottom-xs"
+              >
                 <Fade bottom cascade>
                   <form onSubmit={handleSubmit} className="">
                     <div>
@@ -325,9 +344,9 @@ function EmailSignatureForm() {
                 </Fade>
               </div>
             </div>
-          </>
-        )}
-      </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }
