@@ -34,8 +34,7 @@ function GeneratedSignature({
               <img
                 width="110"
                 className="logo"
-                src="https://staging-agencyhabitat23-staging.kinsta.cloud/wp-content/uploads/2024/01/Abby-Cantwell_Dec2022_Cropped.png"
-                // src={employeeImage}
+                src={employeeImage}
                 alt="Logo 1"
               />
             </p>

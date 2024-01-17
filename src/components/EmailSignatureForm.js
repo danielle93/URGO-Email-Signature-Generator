@@ -61,11 +61,7 @@ function EmailSignatureForm() {
     setLoading(true);
 
     // Construct the filename using the first name and last name
-    const fileName = `${formData.firstName
-      .toLowerCase()
-      .replace(/\s/g, "")}${formData.lastName
-      .toLowerCase()
-      .replace(/\s/g, "")}H.jpg`;
+    const fileName = `${formData.firstName}${formData.lastName}.png`;
     // alert(fileName);
     // Check if the image exists in the employee_headshots folder
     if (fileName) {
@@ -102,11 +98,11 @@ function EmailSignatureForm() {
       setResults(null);
       setCopied(false);
       setFormData({
-        firstName: "",
-        lastName: "",
-        jobTitle: "",
-        phoneNumber: "",
-        emailAddress: "",
+        firstName: `${formData.firstName}`,
+        lastName: `${formData.lastName}`,
+        jobTitle: `${formData.jobTitle}`,
+        phoneNumber: `${formData.phoneNumber}`,
+        emailAddress: `${formData.emailAddress}`,
         color: "#D4DFD7",
       });
       setLoading(false); // Set loading back to false after the delay
@@ -172,7 +168,7 @@ function EmailSignatureForm() {
               </div>
 
               <div className="grid gap-md flex margin-top-xl">
-                <div className="col ">
+                <div className="col-12 col@md">
                   <Fade top cascade>
                     <div
                       className="tableContainer padding-xl height-100%"
@@ -200,7 +196,7 @@ function EmailSignatureForm() {
                   </Fade>
                 </div>
 
-                <div className="col">
+                <div className="col-12 col@md">
                   <div
                     className="padding-lg padding-bottom-0 height-100%"
                     style={{
@@ -255,11 +251,11 @@ function EmailSignatureForm() {
         </>
       ) : (
         <>
-          <div className="grid gap-lg max-width-xl margin-auto">
-            <div className="col margin-top-xl ">
+          <div className="grid gap-lg@md max-width-xl margin-auto">
+            <div className="col-12 col@md margin-top-xl@md">
               <Fade left>
                 <div className="grid margin-bottom-0 height-100% flex justify-center items-center">
-                  <div className="col radius-lg  aspect-ratio-5:4 ">
+                  <div className="col-12 col@md radius-lg aspect-ratio-5:4">
                     <img
                       src={logo}
                       alt=""
@@ -274,14 +270,14 @@ function EmailSignatureForm() {
             </div>
 
             <div
-              className="col margin-top-xl padding-md "
+              className="col-12 col@md margin-top-sm margin-top-xl@md padding-lg padding-md@md "
               style={{ backgroundColor: "#EFF9FB", borderRadius: "30px" }}
             >
               <Fade bottom>
-                <h1 className="font-secondary text-lg text-center">
+                <h1 className="font-secondary text-md text-lg@md text-center">
                   Email Signature Generator
                 </h1>
-                <p className="text-center margin-top-xxs">
+                <p className="text-center margin-top-xxs text-sm text-base@md">
                   Fill out the form below to create your signature
                 </p>
               </Fade>
