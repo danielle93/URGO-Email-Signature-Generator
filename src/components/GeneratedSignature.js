@@ -23,7 +23,7 @@ function GeneratedSignature({
       cellSpacing="0"
       cellPadding="0"
       border="0"
-      width="430"
+      width="380"
       style={{ height: "10px" }}
     >
       {/* <div dangerouslySetInnerHTML={{ __html: conditionalStyles }} /> */}

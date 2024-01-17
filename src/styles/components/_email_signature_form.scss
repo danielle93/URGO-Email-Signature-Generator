@@ -170,3 +170,11 @@ a {
 .highlightable {
   cursor: default;
 }
+
+.generatedSignature {
+  transform: scale(0.7);
+
+  @include breakpoint(md) {
+    transform: scale(1);
+  }
+}

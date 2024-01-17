@@ -159,19 +159,20 @@ function EmailSignatureForm() {
                         objectFit: "contain",
                         maxWidth: "168px",
                       }}
+                      className="width-xxxl width-100%@md"
                     ></img>
-                    <h1 className="margin-0 text-lg font-secondary ">
+                    <h1 className="margin-0 text-sm text-lg@md font-secondary ">
                       Email Signature Generator
                     </h1>
                   </div>
                 </div>
               </div>
 
-              <div className="grid gap-md flex margin-top-xl">
+              <div className="grid gap-md flex margin-top-xl@md">
                 <div className="col-12 col@md">
                   <Fade top cascade>
                     <div
-                      className="tableContainer padding-xl height-100%"
+                      className="tableContainer padding-lg padding-xl@md height-100%"
                       style={{
                         background: "#EFF9FB",
                         borderRadius: "30px",
@@ -188,7 +189,7 @@ function EmailSignatureForm() {
                           alignItems: "center",
                         }}
                         id="content"
-                        className="highlightable"
+                        className="highlightable padding-x-lg"
                       >
                         <p>{results}</p>
                       </div>
@@ -209,25 +210,27 @@ function EmailSignatureForm() {
                       Instructions:
                     </h2>
                     <ul className="font-primary instructions">
-                      <li className="">Click Copy to Clipboard</li>
-                      <li className="">
+                      <li className="text-sm text-base@md">
+                        Click Copy to Clipboard
+                      </li>
+                      <li className="text-sm text-base@md">
                         Outlook &gt; Settings &gt; Signatures &gt; Edit
                       </li>
-                      <li className="">
+                      <li className="text-sm text-base@md">
                         Delete all the content and paste your email signature
                         &gt; Save
                       </li>
-                      <li className="">
+                      <li className="text-sm text-base@md">
                         You can rename the “Standard” email signature to Habitat
                       </li>
-                      <li className="">
+                      <li className="text-sm text-base@md">
                         Under “Choose Default Signature” Select your email
                         signature for “New Messages” and “Replies/Forward”
                       </li>
-                      <li className="">You're done!</li>
+                      <li className="text-sm text-base@md">You're done!</li>
                     </ul>
                   </div>
-                  <div className="text-right">
+                  <div className="text-center text-right@md">
                     <button
                       onClick={handleCopyToClipboard}
                       className="margin-top-md btn btn--primary padding-y-xs margin-right-sm"
@@ -254,14 +257,14 @@ function EmailSignatureForm() {
           <div className="grid gap-lg@md max-width-xl margin-auto">
             <div className="col-12 col@md margin-top-xl@md">
               <Fade left>
-                <div className="grid margin-bottom-0 height-100% flex justify-center items-center">
-                  <div className="col-12 col@md radius-lg aspect-ratio-5:4">
+                <div className="grid margin-bottom-0 height-100% container flex justify-center items-center">
+                  <div className="col-12 col@md radius-lg aspect-ratio-5:4@md">
                     <img
                       src={logo}
                       alt=""
                       style={{
                         objectFit: "contain",
-                        maxWidth: "450px",
+                        maxWidth: "500px",
                       }}
                     ></img>
                   </div>
