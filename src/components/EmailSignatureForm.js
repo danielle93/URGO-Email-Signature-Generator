@@ -62,7 +62,7 @@ function EmailSignatureForm() {
 
     // Construct the filename using the first name and last name
     const fileName = `${formData.firstName}${formData.lastName}.png`;
-    // alert(fileName);
+
     // Check if the image exists in the employee_headshots folder
     if (fileName) {
       import(`../img/employee_headshots/${fileName}`)
@@ -81,11 +81,20 @@ function EmailSignatureForm() {
             setLoading(false);
           }, 1500);
         })
-        .catch(() => {
+        .catch((error) => {
           // Handle the case where the image doesn't exist
           setLoading(false);
-          setResults(null);
-          alert("Employee headshot not found for this name.");
+          setResults(
+            <GeneratedSignature
+              fullName={`${formData.firstName} ${formData.lastName}`}
+              jobTitle={formData.jobTitle}
+              phoneNumber={formData.phoneNumber}
+              emailAddress={formData.emailAddress}
+              address={formData.address}
+              employeeImage={null} // Pass null for the employee image
+            />
+          );
+          console.error("Error loading employee headshot:", error);
         });
     }
   };

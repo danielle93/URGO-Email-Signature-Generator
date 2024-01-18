@@ -1,4 +1,5 @@
 import React from "react";
+import defaultImage from "../img/urgo-placeholder.png";
 
 function GeneratedSignature({
   fullName,
@@ -34,7 +35,7 @@ function GeneratedSignature({
               <img
                 width="110"
                 className="logo"
-                src={employeeImage}
+                src={employeeImage || defaultImage} // Use employeeImage if available, otherwise use the defaultImage
                 alt="Logo 1"
               />
             </p>
