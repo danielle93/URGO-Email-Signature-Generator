@@ -340,6 +340,7 @@ function EmailSignatureForm() {
                         name="emailAddress"
                         value={formData.emailAddress}
                         onChange={handleChange}
+                        required
                       />
                     </div>
                     <div>
@@ -352,6 +353,7 @@ function EmailSignatureForm() {
                         name="phoneNumber"
                         value={formData.phoneNumber}
                         onChange={handleChange}
+                        required
                       />
                     </div>
 
