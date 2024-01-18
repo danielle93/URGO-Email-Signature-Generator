@@ -335,7 +335,7 @@ function EmailSignatureForm() {
                         Your Email
                       </label>
                       <input
-                        type="text"
+                        type="email"
                         id="email"
                         name="emailAddress"
                         value={formData.emailAddress}
