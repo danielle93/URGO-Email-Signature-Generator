@@ -31,9 +31,14 @@ function GeneratedSignature({
       <tbody>
         <tr>
           <td width="50" rowSpan="10">
-            <p style={{ textAlign: "center" }}>
+            <p
+              style={{
+                textAlign: "center",
+                display: employeeImage ? "block" : "none",
+              }}
+            >
               <img
-                width="110"
+                width={employeeImage ? "110" : "0"}
                 className="logo"
                 src={employeeImage || defaultImage} // Use employeeImage if available, otherwise use the defaultImage
                 alt="Logo 1"
@@ -42,7 +47,7 @@ function GeneratedSignature({
 
             <p>
               <img
-                width="105"
+                width={employeeImage ? "105" : "125"}
                 className="logo"
                 src="https://staging-agencyhabitat23-staging.kinsta.cloud/wp-content/uploads/2024/01/URGO-logo-email_.png"
                 alt="Logo 2"
