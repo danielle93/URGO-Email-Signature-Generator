@@ -232,7 +232,8 @@ function EmailSignatureForm() {
                         &gt; Save
                       </li>
                       <li className="text-sm text-base@md">
-                        You can rename the “Standard” email signature to Habitat
+                        You can rename the “Standard” email signature to Urgo
+                        Medical
                       </li>
                       <li className="text-sm text-base@md">
                         Under “Choose Default Signature” Select your email
