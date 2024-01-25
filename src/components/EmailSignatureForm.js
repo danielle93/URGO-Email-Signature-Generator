@@ -83,18 +83,20 @@ function EmailSignatureForm() {
         })
         .catch((error) => {
           // Handle the case where the image doesn't exist
-          setLoading(false);
-          setResults(
-            <GeneratedSignature
-              fullName={`${formData.firstName} ${formData.lastName}`}
-              jobTitle={formData.jobTitle}
-              phoneNumber={formData.phoneNumber}
-              emailAddress={formData.emailAddress}
-              address={formData.address}
-              employeeImage={null} // Pass null for the employee image
-            />
-          );
-          console.error("Error loading employee headshot:", error);
+          setTimeout(() => {
+            setResults(
+              <GeneratedSignature
+                fullName={`${formData.firstName} ${formData.lastName}`}
+                jobTitle={formData.jobTitle}
+                phoneNumber={formData.phoneNumber}
+                emailAddress={formData.emailAddress}
+                address={formData.address}
+                employeeImage={null} // Pass null for the employee image
+              />
+            );
+            setLoading(false);
+          }, 1500);
+          // console.error("Error loading employee headshot:", error);
         });
     }
   };

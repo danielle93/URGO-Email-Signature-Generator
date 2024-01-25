@@ -1,5 +1,6 @@
 import React from "react";
 import defaultImage from "../img/urgo-placeholder.png";
+import urgoEmailLogo from "../img/urgo-logo-email.png";
 
 function GeneratedSignature({
   fullName,
@@ -41,7 +42,7 @@ function GeneratedSignature({
                 width={employeeImage ? "110" : "0"}
                 className="logo"
                 src={employeeImage || defaultImage} // Use employeeImage if available, otherwise use the defaultImage
-                alt="Logo 1"
+                alt="Employee Headshot"
               />
             </p>
 
@@ -49,8 +50,8 @@ function GeneratedSignature({
               <img
                 width={employeeImage ? "105" : "125"}
                 className="logo"
-                src="https://staging-agencyhabitat23-staging.kinsta.cloud/wp-content/uploads/2024/01/URGO-logo-email_.png"
-                alt="Logo 2"
+                src={urgoEmailLogo}
+                alt="Urgo Logo"
               />
             </p>
           </td>
@@ -131,7 +132,7 @@ function GeneratedSignature({
           >
             <a
               style={{ textDecoration: "underline", color: "#003865" }}
-              href="tel:0000000000"
+              href={`tel:${phoneNumber}`}
             >
               {phoneNumber}
             </a>
@@ -166,7 +167,7 @@ function GeneratedSignature({
             }}
           >
             100 <span style={{ display: "none" }}> -</span>Lexington
-            <span style={{ display: "none" }}> -</span>Street, Suite 400
+            <span style={{ display: "none" }}> -</span> Street, Suite 400
           </td>
         </tr>
         <tr>
@@ -180,7 +181,7 @@ function GeneratedSignature({
             }}
           >
             Fort <span style={{ display: "none" }}> -</span>Worth,
-            <span style={{ display: "none" }}> -</span>TX 76102
+            <span style={{ display: "none" }}> -</span> TX 76102
             <span style={{ display: "none" }}> -</span>
           </td>
         </tr>
