@@ -378,11 +378,11 @@ module.exports = function (webpackEnv) {
             // smaller than specified limit in bytes as data URLs to avoid requests.
             // A missing `test` is equivalent to a match.
             {
-              test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-              loader: require.resolve("url-loader"),
+              // Configure file-loader for headshot images
+              test: /headshots\/.*\.(bmp|gif|jpe?g|png)$/,
+              loader: require.resolve("file-loader"),
               options: {
-                limit: imageInlineSizeLimit,
-                name: "static/media/[name].[ext]",
+                name: "static/media/_headshots/[name].[ext]",
               },
             },
             // Process application JS with Babel.
