@@ -11,14 +11,6 @@ function GeneratedSignature({
   employeeImage,
   color,
 }) {
-  const conditionalStyles = `
-    <!--[if (gte mso 9)|(IE)]>
-      <style type="text/css">
-        table {width: 430px !important;}
-        td {width: 110px !important;}
-      </style>
-    <![endif]-->
-  `;
   return (
     <table
       className="generatedSignature"

@@ -1,19 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Fade } from "react-reveal";
 import GeneratedSignature from "./GeneratedSignature";
 import logo from "../img/URGO-logo.jpg";
 
-// Import employee headshots
-const employeeHeadshots = {};
-const context = require.context(
-  "../img/employee_headshots",
-  false,
-  /\.(jpg|jpeg|png)$/
-);
-context.keys().forEach((key) => {
-  const fileName = key.replace("./", "");
-  employeeHeadshots[fileName] = context(key);
-});
+// // Import employee headshots
+// const employeeHeadshots = {};
+// const context = require.context(
+//   "../img/employee_headshots",
+//   false,
+//   /\.(jpg|jpeg|png)$/
+// );
+// context.keys().forEach((key) => {
+//   const fileName = key.replace("./", "");
+//   employeeHeadshots[fileName] = context(key);
+// });
 function EmailSignatureForm() {
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState(null); //Dani change this back to null
@@ -56,48 +56,98 @@ function EmailSignatureForm() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const searchForEmployeeImage = async (offset, retryCount = 0) => {
+    try {
+      const response = await fetch(
+        `https://api.airtable.com/v0/appY8CxyBarWLloUl/tblA3FWH04lI1Owc7?offset=${offset}`,
+        {
+          headers: {
+            Authorization:
+              "Bearer patklFpRFTCD4TQ3D.d05abdf3abc73f8fd708795a8226e85c10a5c67857a115385f29ee88449b626e",
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch data from Airtable");
+      }
+
+      const data = await response.json();
+      const fileName =
+        `${formData.firstName}${formData.lastName}.png`.toLowerCase(); // Convert to lowercase
+
+      // Log all unique entries
+      const uniqueEntries = new Set(
+        data.records.map((record) =>
+          record.fields.Attachments[0].filename.toLowerCase()
+        )
+      ); // Convert to lowercase
+      console.log("Unique Entries:", Array.from(uniqueEntries));
+
+      // Find the record with the matching filename in the Airtable API response
+      const matchingRecord = data.records.find((record) => {
+        const attachments = record.fields.Attachments;
+        return (
+          attachments &&
+          attachments.length > 0 &&
+          attachments[0].filename.toLowerCase() === fileName
+        );
+      });
+
+      if (matchingRecord) {
+        return matchingRecord.fields.Attachments[0].thumbnails.full.url;
+      } else if (data.offset && retryCount < 2) {
+        // If there are no matching records and there's more data, retry with the new offset
+        return searchForEmployeeImage(data.offset, retryCount + 1);
+      } else {
+        // If no matching record is found and no more data is available, return null
+        return null;
+      }
+    } catch (error) {
+      console.error("Error fetching data from Airtable:", error);
+      return null;
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
-    // Construct the filename using the first name and last name
-    const fileName = `${formData.firstName}${formData.lastName}.png`;
+    try {
+      const offset = ""; // Start with an empty offset
+      const employeeImage = await searchForEmployeeImage(offset);
 
-    // Check if the image exists in the employee_headshots folder
-    if (fileName) {
-      import(`../img/employee_headshots/${fileName}`)
-        .then((employeeImage) => {
-          setTimeout(() => {
-            setResults(
-              <GeneratedSignature
-                fullName={`${formData.firstName} ${formData.lastName}`}
-                jobTitle={formData.jobTitle}
-                phoneNumber={formData.phoneNumber}
-                emailAddress={formData.emailAddress}
-                address={formData.address}
-                employeeImage={employeeImage.default} // Pass the background image
-              />
-            );
-            setLoading(false);
-          }, 1500);
-        })
-        .catch((error) => {
-          // Handle the case where the image doesn't exist
-          setTimeout(() => {
-            setResults(
-              <GeneratedSignature
-                fullName={`${formData.firstName} ${formData.lastName}`}
-                jobTitle={formData.jobTitle}
-                phoneNumber={formData.phoneNumber}
-                emailAddress={formData.emailAddress}
-                address={formData.address}
-                employeeImage={null} // Pass null for the employee image
-              />
-            );
-            setLoading(false);
-          }, 1500);
-          // console.error("Error loading employee headshot:", error);
-        });
+      if (employeeImage) {
+        setResults((prevResults) => (
+          <GeneratedSignature
+            fullName={`${formData.firstName} ${formData.lastName}`}
+            jobTitle={formData.jobTitle}
+            phoneNumber={formData.phoneNumber}
+            emailAddress={formData.emailAddress}
+            address={formData.address}
+            employeeImage={employeeImage} // Pass the background image URL directly
+          />
+        ));
+
+        setLoading(false);
+      } else {
+        // Handle the case where the image doesn't exist in the Airtable response
+        setResults((prevResults) => (
+          <GeneratedSignature
+            fullName={`${formData.firstName} ${formData.lastName}`}
+            jobTitle={formData.jobTitle}
+            phoneNumber={formData.phoneNumber}
+            emailAddress={formData.emailAddress}
+            address={formData.address}
+            employeeImage={null} // Pass null for the employee image
+          />
+        ));
+
+        setLoading(false);
+      }
+    } catch (error) {
+      console.error("Error fetching data from Airtable:", error);
+      setLoading(false);
     }
   };
 
