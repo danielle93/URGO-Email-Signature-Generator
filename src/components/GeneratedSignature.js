@@ -65,45 +65,47 @@ function GeneratedSignature({
             width="100%"
             style={{
               fontWeight: "bold",
-              fontFamily: "helvetica, sans-serif",
+              fontFamily: "'Helvetica', 'Arial', sans-serif",
               color: "#003865",
               fontSize: "22px",
             }}
           >
-            {fullName}
+            <font face="'Helvetica', 'Arial', sans-serif">{fullName}</font>
           </td>
         </tr>
         <tr>
           <td
             width="100%"
             style={{
-              fontFamily: "helvetica, sans-serif",
+              fontFamily: "'Helvetica', 'Arial', sans-serif",
               color: "#003865",
               fontSize: "16px",
               fontWeight: "normal",
             }}
           >
-            {jobTitle}
+            <font face="'Helvetica', 'Arial', sans-serif">{jobTitle}</font>
           </td>
         </tr>
         <tr>
           <td
             width="100%"
             style={{
-              fontFamily: "helvetica, sans-serif",
+              fontFamily: "'Helvetica', 'Arial', sans-serif",
               color: "#003865",
               fontSize: "14px",
               fontWeight: "normal",
             }}
           >
-            Urgo Medical North America
+            <font face="'Helvetica', 'Arial', sans-serif">
+              Urgo Medical North America
+            </font>
           </td>
         </tr>
         <tr>
           <td
             width="100%"
             style={{
-              fontFamily: "helvetica, sans-serif",
+              fontFamily: "'Helvetica', 'Arial', sans-serif",
               color: "#003865",
               fontSize: "8px",
               fontWeight: "normal",
@@ -116,7 +118,7 @@ function GeneratedSignature({
           <td
             width="100%"
             style={{
-              fontFamily: "helvetica, sans-serif",
+              fontFamily: "'Helvetica', 'Arial', sans-serif",
               color: "#003865",
               fontSize: "14px",
               fontWeight: "normal",
@@ -126,7 +128,7 @@ function GeneratedSignature({
               style={{ textDecoration: "underline", color: "#003865" }}
               href={`tel:${phoneNumber}`}
             >
-              {phoneNumber}
+              <font face="'Helvetica', 'Arial', sans-serif">{phoneNumber}</font>
             </a>
           </td>
         </tr>
@@ -134,7 +136,7 @@ function GeneratedSignature({
           <td
             width="100%"
             style={{
-              fontFamily: "helvetica, sans-serif",
+              fontFamily: "'Helvetica', 'Arial', sans-serif",
               color: "#003865",
               fontSize: "14px",
               fontWeight: "normal",
@@ -144,7 +146,9 @@ function GeneratedSignature({
               style={{ textDecoration: "underline", color: "#003865" }}
               href={`mailto:${emailAddress}`}
             >
-              {emailAddress}
+              <font face="'Helvetica', 'Arial', sans-serif">
+                {emailAddress}
+              </font>
             </a>
           </td>
         </tr>
@@ -152,36 +156,40 @@ function GeneratedSignature({
           <td
             width="100%"
             style={{
-              fontFamily: "helvetica, sans-serif",
+              fontFamily: "'Helvetica', 'Arial', sans-serif",
               color: "#003865",
               fontSize: "14px",
               fontWeight: "normal",
             }}
           >
-            100 <span style={{ display: "none" }}> -</span>Lexington
-            <span style={{ display: "none" }}> -</span> Street, Suite 400
+            <font face="'Helvetica', 'Arial', sans-serif">
+              100 <span style={{ display: "none" }}> -</span>Lexington
+              <span style={{ display: "none" }}> -</span> Street, Suite 400
+            </font>
           </td>
         </tr>
         <tr>
           <td
             width="100%"
             style={{
-              fontFamily: "helvetica, sans-serif",
+              fontFamily: "'Helvetica', 'Arial', sans-serif",
               color: "#003865",
               fontSize: "14px",
               fontWeight: "normal",
             }}
           >
-            Fort <span style={{ display: "none" }}> -</span>Worth,
-            <span style={{ display: "none" }}> -</span> TX 76102
-            <span style={{ display: "none" }}> -</span>
+            <font face="'Helvetica', 'Arial', sans-serif">
+              Fort <span style={{ display: "none" }}> -</span>Worth,
+              <span style={{ display: "none" }}> -</span> TX 76102
+              <span style={{ display: "none" }}> -</span>
+            </font>
           </td>
         </tr>
         <tr>
           <td
             width="100%"
             style={{
-              fontFamily: "helvetica, sans-serif",
+              fontFamily: "'Helvetica', 'Arial', sans-serif",
               color: "#003865",
               fontSize: "14px",
               fontWeight: "normal",
@@ -191,7 +199,9 @@ function GeneratedSignature({
               style={{ textDecoration: "underline", color: "#003865" }}
               href="https://urgomedical.us"
             >
-              urgomedical.us
+              <font face="'Helvetica', 'Arial', sans-serif">
+                urgomedical.us
+              </font>
             </a>
           </td>
         </tr>
