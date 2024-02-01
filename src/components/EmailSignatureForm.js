@@ -73,8 +73,9 @@ function EmailSignatureForm() {
       }
 
       const data = await response.json();
-      const fileName =
-        `${formData.firstName}${formData.lastName}.png`.toLowerCase(); // Convert to lowercase
+      var fileName = `${formData.firstName}${formData.lastName}.png`
+        .toLowerCase() // convert to lowercase
+        .replace(/\s/g, ""); // remove extra spaces
 
       // Log all unique entries
       const uniqueEntries = new Set(
@@ -117,10 +118,15 @@ function EmailSignatureForm() {
       const offset = ""; // Start with an empty offset
       const employeeImage = await searchForEmployeeImage(offset);
 
+      const cleanedFirstName = formData.firstName.replace(/\s+/g, " ").trim();
+      const cleanedLastName = formData.lastName.replace(/\s+/g, " ").trim();
+
+      const fullName = `${cleanedFirstName} ${cleanedLastName}`;
+
       if (employeeImage) {
         setResults((prevResults) => (
           <GeneratedSignature
-            fullName={`${formData.firstName} ${formData.lastName}`}
+            fullName={fullName}
             jobTitle={formData.jobTitle}
             phoneNumber={formData.phoneNumber}
             emailAddress={formData.emailAddress}
