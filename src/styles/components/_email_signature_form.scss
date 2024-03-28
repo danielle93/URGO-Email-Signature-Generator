@@ -7,13 +7,16 @@ h1,
 h2 {
   font-weight: bold;
 }
-h1,
-h2,
-h3,
-p {
+h1 {
   color: #003865;
 }
 
+h2,
+h3,
+p,
+a {
+  color: #7088ad;
+}
 .btn--primary {
   background-color: #003865;
 

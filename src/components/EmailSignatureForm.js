@@ -23,6 +23,8 @@ function EmailSignatureForm() {
     lastName: "",
     jobTitle: "",
     phoneNumber: "",
+    deskNumber: "",
+    faxNumber: "",
     emailAddress: "",
     color: "#D4DFD7",
   });
@@ -30,7 +32,7 @@ function EmailSignatureForm() {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    // Check if the input is the phone number field
+    // Check if the input is the cell phone number field
     if (name === "phoneNumber") {
       // Remove non-numeric characters
       const numericPhoneNumber = value.replace(/\D/g, "");
@@ -47,6 +49,42 @@ function EmailSignatureForm() {
       setFormData({
         ...formData,
         [name]: formattedPhoneNumber,
+      });
+    } // Check if the input is the desk phone number field
+    else if (name === "deskNumber") {
+      // Remove non-numeric characters
+      const numericDeskNumber = value.replace(/\D/g, "");
+
+      // Enforce the character limit of 10
+      const truncatedDeskNumber = numericDeskNumber.slice(0, 10);
+
+      // Format the truncated phone number as (###) ###-####
+      const formattedDeskNumber = truncatedDeskNumber.replace(
+        /(\d{3})(\d{3})(\d{4})/,
+        "($1) $2-$3"
+      );
+
+      setFormData({
+        ...formData,
+        [name]: formattedDeskNumber,
+      });
+    } // Check if the input is the desk phone number field
+    else if (name === "faxNumber") {
+      // Remove non-numeric characters
+      const numericFaxNumber = value.replace(/\D/g, "");
+
+      // Enforce the character limit of 10
+      const truncatedFaxNumber = numericFaxNumber.slice(0, 10);
+
+      // Format the truncated phone number as (###) ###-####
+      const formattedFaxNumber = truncatedFaxNumber.replace(
+        /(\d{3})(\d{3})(\d{4})/,
+        "($1) $2-$3"
+      );
+
+      setFormData({
+        ...formData,
+        [name]: formattedFaxNumber,
       });
     } else {
       setFormData({
@@ -129,6 +167,8 @@ function EmailSignatureForm() {
             fullName={fullName}
             jobTitle={formData.jobTitle}
             phoneNumber={formData.phoneNumber}
+            deskNumber={formData.deskNumber}
+            faxNumber={formData.faxNumber}
             emailAddress={formData.emailAddress}
             address={formData.address}
             employeeImage={employeeImage} // Pass the background image URL directly
@@ -143,6 +183,8 @@ function EmailSignatureForm() {
             fullName={`${formData.firstName} ${formData.lastName}`}
             jobTitle={formData.jobTitle}
             phoneNumber={formData.phoneNumber}
+            deskNumber={formData.deskNumber}
+            faxNumber={formData.faxNumber}
             emailAddress={formData.emailAddress}
             address={formData.address}
             employeeImage={null} // Pass null for the employee image
@@ -169,6 +211,8 @@ function EmailSignatureForm() {
         lastName: `${formData.lastName}`,
         jobTitle: `${formData.jobTitle}`,
         phoneNumber: `${formData.phoneNumber}`,
+        deskNumber: `${formData.deskNumber}`,
+        faxNumber: `${formData.faxNumber}`,
         emailAddress: `${formData.emailAddress}`,
         color: "#D4DFD7",
       });
@@ -359,31 +403,33 @@ function EmailSignatureForm() {
               >
                 <Fade bottom cascade>
                   <form onSubmit={handleSubmit} className="">
-                    <div>
-                      <label className="block " htmlFor="first-name">
-                        First Name
-                      </label>
-                      <input
-                        type="text"
-                        id="first-name"
-                        name="firstName"
-                        value={formData.firstName}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label className="block" htmlFor="last-name">
-                        Last Name
-                      </label>
-                      <input
-                        type="text"
-                        id="last-name"
-                        name="lastName"
-                        value={formData.lastName}
-                        onChange={handleChange}
-                        required
-                      />
+                    <div className="flex">
+                      <div className="width-100% margin-right-xxs">
+                        <label className="block " htmlFor="first-name">
+                          First Name
+                        </label>
+                        <input
+                          type="text"
+                          id="first-name"
+                          name="firstName"
+                          value={formData.firstName}
+                          onChange={handleChange}
+                          required
+                        />
+                      </div>
+                      <div className="width-100% margin-left-xxs">
+                        <label className="block" htmlFor="last-name">
+                          Last Name
+                        </label>
+                        <input
+                          type="text"
+                          id="last-name"
+                          name="lastName"
+                          value={formData.lastName}
+                          onChange={handleChange}
+                          required
+                        />
+                      </div>
                     </div>
                     <div>
                       <label className="block" htmlFor="job-title">
@@ -413,7 +459,7 @@ function EmailSignatureForm() {
                     </div>
                     <div>
                       <label className="block" htmlFor="phone-number">
-                        Your Phone Number
+                        Your Cell Phone Number (Optional)
                       </label>
                       <input
                         type="tel"
@@ -421,7 +467,32 @@ function EmailSignatureForm() {
                         name="phoneNumber"
                         value={formData.phoneNumber}
                         onChange={handleChange}
-                        required
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block" htmlFor="desk-number">
+                        Your Desk Phone Number (Optional)
+                      </label>
+                      <input
+                        type="tel"
+                        id="desk-number"
+                        name="deskNumber"
+                        value={formData.deskNumber}
+                        onChange={handleChange}
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block" htmlFor="fax-number">
+                        Your Fax Number (Optional)
+                      </label>
+                      <input
+                        type="tel"
+                        id="fax-number"
+                        name="faxNumber"
+                        value={formData.faxNumber}
+                        onChange={handleChange}
                       />
                     </div>
 
